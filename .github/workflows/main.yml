@@ -1,54 +1,78 @@
-
-name: get españoles ncaa
-
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 7 * * *'  
+    - cron: '0 7 * * *'  # 07:00 UTC = 08:00 CET (Madrid) durante la temporada
+
+name: get españoles ncaa
+
+permissions:
+  contents: write   # necesario para que el workflow pueda commitear/pushear cambios
+
+concurrency:
+  group: get-espanoles-ncaa
+  cancel-in-progress: true
 
 jobs:
-  Get-espanoles-ncaa:
-    name: Extraer el top BrokerBasket SuperManager
+  get-espanoles:
+    name: Extraer y actualizar tabla (8:00 Madrid)
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      NCAA_TOKEN: ${{ secrets.NCAA_TOKEN }}
     steps:
-      - uses: actions/checkout@v3  
-      
-      - uses: r-lib/actions/setup-r@v2
-        with: 
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
           use-public-rspm: true
           r-version: 'release'
-          
-      - name: Install libcurl and libssl on Linux
-        run: sudo apt-get -y install libcurl4-openssl-dev
+
+      - name: Install system deps (only if needed)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev
         shell: bash
-        
+
       - name: Cache CRAN packages
-        uses: actions/cache@v3 
+        uses: actions/cache@v3
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
-          restore-keys: ${{ runner.os }}-r-
-          
-      - name: Install CRAN packages
+          key: ${{ runner.os }}-r-${{ hashFiles('**/renv.lock','**/DESCRIPTION') }}
+          restore-keys: |
+            ${{ runner.os }}-r-
+
+      - name: Install R dependencies (fast, uses cache)
         uses: r-lib/actions/setup-r-dependencies@v2
-        with: 
-          packages: tidyverse, httr, httr2, gt, gtExtras, glue, lubridate,
-            jsonlite, rvest, curl
-      - name: Run R update script
+        with:
+          packages: |
+            tidyverse
+            httr
+            httr2
+            gt
+            gtExtras
+            glue
+            lubridate
+            jsonlite
+            rvest
+            curl
+
+      - name: Run update script
         run: Rscript scripts/tabla_gt.R
         shell: bash
 
-      - name: Commit changes in data folder
+      - name: Commit and push changes (if any)
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add png/*.png
-          git diff --cached --quiet || git commit -m "Auto-update: brokerbasket general"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add png/*.png || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update: brokerbasket general"
+            git push
+          fi
         shell: bash
-
-      - name: Push changes
-        run: git push
-        env:
-          NCAA_TOKEN: ${{ secrets.NCAA_TOKEN }}
