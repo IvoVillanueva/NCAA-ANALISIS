@@ -1,6 +1,28 @@
 source("R/helper.R")
 source("R/funciones.R")
 
+# Descargar la tabla de jugadores españoles en NCAA
+spain_players <-
+  read_csv(
+   "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
+show_col_types = FALSE
+  ) %>%
+  html_node("table") %>%
+  html_table() %>%
+  mutate(Player = gsub("\\s+", " ", Player)) %>%
+  pull(Player)
+
+spain_players_games <-
+  read_csv(
+   "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
+show_col_types = FALSE
+  ) %>%
+  html_node("table") %>%
+  html_table() %>%
+  mutate(Player = gsub("\\s+", " ", Player)) %>%
+  select(Player, gm = GP)
+
+
 # Filtrar y resumir los datos de los jugadores españoles
 spain_df <- players_all %>%
   filter(athlete_display_name %in% spain_players) %>%
