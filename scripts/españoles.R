@@ -7,8 +7,6 @@ spain_players <-
    "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
 show_col_types = FALSE
   ) %>%
-  html_node("table") %>%
-  html_table() %>%
   mutate(Player = gsub("\\s+", " ", Player)) %>%
   pull(Player)
 
@@ -17,8 +15,6 @@ spain_players_games <-
    "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
 show_col_types = FALSE
   ) %>%
-  html_node("table") %>%
-  html_table() %>%
   mutate(Player = gsub("\\s+", " ", Player)) %>%
   select(Player, gm = GP)
 
