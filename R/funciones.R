@@ -64,21 +64,6 @@ players_all <- dplyr::bind_rows(res_players, .id = "date_id")
 
 
 
-# Configuración del manejador de curl con User-Agent y cookies
-ua <- "Mozilla/5.0 (...) Safari/537.36"
-h <- new_handle()
-handle_setheaders(h,
-                  "User-Agent" = ua,
-                  "Referer" = "https://basketball.realgm.com/"
-)
-handle_setopt(h, cookiefile = "", cookiejar = "cookies.txt", http_version = 2L)
-
-# Función para obtener y parsear una página de RealGM
-get_realgm <- function(url) {
-  curl_fetch_memory("https://basketball.realgm.com/", handle = h)
-  res <- curl_fetch_memory(url, handle = h)
-  read_html(res$content)
-}
 
 
 # etiqueta html para la foto del jugador con el logo del equipo detrás
