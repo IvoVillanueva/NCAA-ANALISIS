@@ -73,6 +73,8 @@ gt_tbl <- spain_df_final %>%
     table.font.names = "Oswald",
     table.additional_css = ".gt_table {
                 margin-bottom: 40px;
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
               }"
   ) %>%
   gt_color_rows(pts, palette = c("white", "#009CDE")) %>%
@@ -89,22 +91,6 @@ gt_tbl <- spain_df_final %>%
       " temporada 25-26</span>"
     ))
   ) %>%
-  tab_source_note(source_note = md(caption)) 
+  tab_source_note(source_note = md(caption)) |>
+  gtsave("png/ncaaspain.png", vwidth = 3700, vheight = 1500, expand = 300)
 
-
-# Crear HTML con Oswald y Font Awesome y generar PNG usando webshot2
-head_links <- paste0(
-  '<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">',
-  '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">'
-)
-
-html <- paste0(
-  '<!doctype html><html><head><meta charset="utf-8">', head_links,
-  '</head><body>', gt::as_raw_html(gt_tbl), '</body></html>'
-)
-
-dir.create("png", showWarnings = FALSE, recursive = TRUE)
-writeLines(html, "png/ncaaspain.html")
-
-# Renderizar PNG (asegúrate de tener webshot2 y Chrome/Chromium en el runner)
-webshot2::webshot("png/ncaaspain.html", file = "png/ncaaspain.png", vwidth = 3700, vheight = 1500, expand = 300)
