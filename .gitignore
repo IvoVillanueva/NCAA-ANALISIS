@@ -47,3 +47,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# archivo history que me ensucia la raiz
+.Rhistory
