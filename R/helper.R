@@ -19,7 +19,7 @@ if (!dir.exists("png")) dir.create("png")
 
 
 # Información del autor para el pie de gráfico
-twitter <- '<span class="fa-brands fa-twitter" style="color:#000000;" aria-hidden="true"></span>'
+twitter <- '<span class="fa-brands square-x-twitter" style="color:#000000;"></span>'
 tweetelcheff <- "<span>*@elcheff*</span>"
 insta <- "<span style='color:#E1306C;font-family: \"Font Awesome 6 Brands\"'>&#xE055;</span>"
 instaelcheff <- "<span>*@sport_iv0*</span>"
@@ -27,6 +27,6 @@ github <- "<span style='color:#000000;font-family: \"Font Awesome 6 Brands\"'>&#
 githubelcheff <- "<span>*IvoVillanueva*</span>"
 caption <- glue("**Datos**: *@ESPN* **Gráfico**: *Ivo Villanueva* • {twitter} {tweetelcheff} • {insta} {instaelcheff} • {github} {githubelcheff}")
 
-
+<wa-icon name="square-x-twitter" family="brands"></wa-icon>
 
 
