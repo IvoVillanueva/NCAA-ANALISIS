@@ -1,4 +1,4 @@
-source("scripts/españoles.R")
+source("scripts/spain.R")
 source("R/funciones.R")
 source("R/helper.R")
 

@@ -47,12 +47,13 @@ for (i in get_calendar()) {
   
   players <- request(
     glue::glue("https://raw.githubusercontent.com/IvoVillanueva/ncaa-boxscore/refs/heads/main/data/players/players_{i}.csv")
-  ) |>
-    req_headers(Authorization = paste("token", token)) |>
-    req_perform() |>
-    resp_body_string() |>
+  ) %>% 
+    req_headers(Authorization = paste("token", token)) %>% 
+    req_perform()  %>% 
+    resp_body_string()  %>% 
     readr::read_csv(show_col_types = FALSE) %>% 
-    mutate(athlete_jersey = ifelse(athlete_jersey == as.numeric(athlete_jersey), as.character(athlete_jersey), athlete_jersey))
+    mutate(athlete_jersey = ifelse(athlete_jersey == as.numeric(athlete_jersey),
+                                   as.character(athlete_jersey), athlete_jersey))
   
   res_players[[i]] <- players
   
