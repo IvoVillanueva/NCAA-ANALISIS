@@ -2,10 +2,6 @@ source("R/helper.R")
 source("R/funciones.R")
 
 
-
-
-
-
 # Filtrar y resumir los datos de los jugadores españoles
 spain_df <- players_all %>%
   filter(athlete_display_name %in% spain_players) %>%
