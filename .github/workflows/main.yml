@@ -61,7 +61,7 @@ jobs:
             curl
 
       - name: Run update script
-        run: Rscript scripts/tabla_gt.R
+        run: Rscript scripts/spain_gt.R
         shell: bash
 
       - name: Commit and push changes (if any)
