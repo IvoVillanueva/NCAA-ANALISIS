@@ -16,10 +16,7 @@ library(glue)
 
 if (!dir.exists("png")) dir.create("png")
 
-
-
-
-twitter <- "<span style='color:#c8102e;font-family: \"Font Awesome 6 Brands\"'>&#xE61A;</span>"
+twitter <- "<span style='color:#b14f04'>&#x1D54F;</span>"
 tweetelcheff <- "<span style='font-weight:bold;color: grey;'>*@elcheff*</span>"
 insta <- "<span style='color:#E1306C;font-family: \"Font Awesome 6 Brands\"'>&#xE055;</span>"
 instaelcheff <- "<span style='font-weight:bold;color: grey;'>*@sport_iv0*</span>"
