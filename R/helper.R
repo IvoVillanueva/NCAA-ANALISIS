@@ -26,6 +26,7 @@ caption <- glue::glue("**Datos**: *@NBA* | **Gráfico**: *Ivo Villanueva* • {t
 
 
 
+
 # Descargar la tabla de jugadores españoles en NCAA
 spain_players <-
   read_csv(
