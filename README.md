@@ -36,7 +36,7 @@ df$team <- gsub('"', '', df$team)
 
 ```r
 # Leer CSV
-df <- read.csv("archivo.csv", stringsAsFactors = FALSE)
+df <- read.csv("archivo.csv")
 
 # Limpiar la columna
 df$nombre_columna <- gsub('"', '', df$nombre_columna)
