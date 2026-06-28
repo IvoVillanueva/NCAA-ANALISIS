@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 7 * * *'  # 07:00 UTC = 08:00 CET (Madrid) durante la temporada
+  #schedule:
+   # - cron: '0 7 * * *'  # 07:00 UTC = 08:00 CET (Madrid) durante la temporada
 
 name: get españoles ncaa
 
