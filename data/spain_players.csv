@@ -1,39 +1,39 @@
-Player,Nombre,Team
-Izan Almansa,Izan Almansa,Gonzaga
-Juan Fernandez,Juan Fernández,South Carolina
-Ruben Dominguez,Rubén Domínguez,Xavier
-Fabian Flores,Fabián Flores,DePaul
-Lucas Langarita,Lucas Langarita,Utah
-David Gomez,David Gómez,Colorado
-Victory Onuetu,Victory Onuetu,Wisconsin
-Alvaro Folgueiras,Álvaro Folgueiras,Louisville
-Jordi Rodriguez-Stegemeijer,Jordi Rodríguez,Charlotte
-Miguel Allen,Miguel Malik Allen,Charlotte
-Chiek Diallo,Chiek Diallo,St. Bonaventure
-Ian Platteeuw,Ian Platteeuw,Davidson
-Guillermo Del Pino,Guillermo del Pino,Maryland
-Hugo Lopez,Hugo López,South Carolina
-Pedro Sancho Moraga,Pedro Sancho,Washington State
-Roger Fabrega Urpina,Roger Fàbrega,Fresno State
-Bruno Alocen,Bruno Alocén,Valparaiso
-Max Gaspa,Max Gaspà,Bradley
-Alberto Blanco,Alberto Blanco,Oral Roberts
-Santiago Paz,Santi Paz,North Dakota State
-Clem Edomwonyin,Clem Edomwonyin,Drexel
-Raúl Villar,Raúl Villar,Elon
-Iker Garmendia,Iker Garmendia,Elon
-Julen Iturbe,Julen Iturbe,American
-Alex Huguet,Álex Huguet,Loyola Maryland
-Pablo Jimenez,Pablo Jiménez,Southeastern Louisiana
-Maximo Garcia-Plata,Máximo García-Plata,Incarnate Word
-Miquel Llompart,Miquel Llompart,Mount St. Mary's
-Asier Miguel,Asier Miguel,Manhattan
-Andres Amon,Andrés Amón,Siena
-Xabi Lopez,Xabi López,Abilene Christian
-Aleix Sempere,Aleix Sempere,West Georgia
-Juanma Ruiz,Juanma Ruiz,Northern Kentucky
-Enrique Moya,Kike Moya,UT Martin
-Jose Roberto Tanchyn,JR Tanchyn,San Diego
-Jorge Carot,Jorge Carot,Pacific
-Carlos Varela,Carlos Varela,UMBC
-Conrad Martinez,Conrad Martínez,High Point
+Player,Nombre,Team,Grupo
+Izan Almansa,Izan Almansa,Gonzaga,High-Major
+Juan Fernandez,Juan Fernández,South Carolina,High-Major
+Ruben Dominguez,Rubén Domínguez,Xavier,High-Major
+Fabian Flores,Fabián Flores,DePaul,High-Major
+Lucas Langarita,Lucas Langarita,Utah,High-Major
+David Gomez,David Gómez,Colorado,High-Major
+Victory Onuetu,Victory Onuetu,Wisconsin,High-Major
+Alvaro Folgueiras,Álvaro Folgueiras,Louisville,High-Major
+Jordi Rodriguez-Stegemeijer,Jordi Rodríguez,Charlotte,High-Major
+Miguel Allen,Miguel Malik Allen,Charlotte,High-Major
+Chiek Diallo,Chiek Diallo,St. Bonaventure,High-Major
+Ian Platteeuw,Ian Platteeuw,Davidson,High-Major
+Guillermo Del Pino,Guillermo del Pino,Maryland,High-Major
+Hugo Lopez,Hugo López,South Carolina,High-Major
+Pedro Sancho Moraga,Pedro Sancho,Washington State,High-Major
+Roger Fabrega Urpina,Roger Fàbrega,Fresno State,High-Major
+Bruno Alocen,Bruno Alocén,Valparaiso,Mid-Major
+Max Gaspa,Max Gaspà,Bradley,Mid-Major
+Alberto Blanco,Alberto Blanco,Oral Roberts,Mid-Major
+Santiago Paz,Santi Paz,North Dakota State,Mid-Major
+Clem Edomwonyin,Clem Edomwonyin,Drexel,Mid-Major
+Raúl Villar,Raúl Villar,Elon,Mid-Major
+Iker Garmendia,Iker Garmendia,Elon,Mid-Major
+Julen Iturbe,Julen Iturbe,American,Mid-Major
+Alex Huguet,Álex Huguet,Loyola Maryland,Mid-Major
+Pablo Jimenez,Pablo Jiménez,Southeastern Louisiana,Mid-Major
+Maximo Garcia-Plata,Máximo García-Plata,Incarnate Word,Mid-Major
+Miquel Llompart,Miquel Llompart,Mount St. Mary's,Mid-Major
+Asier Miguel,Asier Miguel,Manhattan,Mid-Major
+Andres Amon,Andrés Amón,Siena,Mid-Major
+Xabi Lopez,Xabi López,Abilene Christian,Mid-Major
+Aleix Sempere,Aleix Sempere,West Georgia,Mid-Major
+Juanma Ruiz,Juanma Ruiz,Northern Kentucky,Mid-Major
+Enrique Moya,Kike Moya,UT Martin,Mid-Major
+Jose Roberto Tanchyn,JR Tanchyn,San Diego,Mid-Major
+Jorge Carot,Jorge Carot,Pacific,Mid-Major
+Carlos Varela,Carlos Varela,UMBC,Mid-Major
+Conrad Martinez,Conrad Martínez,High Point,Mid-Major

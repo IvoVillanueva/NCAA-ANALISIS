@@ -3,9 +3,9 @@ source("R/funciones.R")
 source("R/helper.R")
 
 
-# Crear la tabla gt
-spain_df_final %>%
-  filter(pts > 2) %>%
+# Una tabla para High-Major y otra para Mid-Major
+walk(c("High-Major", "Mid-Major"), ~ spain_df_final %>%
+  filter(grupo == .x, pts > 2) %>%
   mutate(
     name = word(jug, 1),
     surname = word(jug, 2, -1),
@@ -79,18 +79,17 @@ spain_df_final %>%
   ) %>%
   gt_color_rows(pts, palette = c("white", "#009CDE")) %>%
   tab_header(
-    title = md("<div style='display: flex; align-items: center;
+    title = html(glue("<div style='display: flex; align-items: center;
     justify-content: left; height: 58px; text-align: center; font-weight: 600;
     font-size: 75px;'>
-               <span style='text-align:left;'>Españoles en la NCAA</div>"),
-    subtitle = md(paste0(
+               <span style='text-align:left;'>Españoles en la NCAA | {.x}</div>")),
+    subtitle = html(paste0(
       "<span style='display:block;text-align:left;font-weight:400;color:#8C8C8C;
                      font-size:40px;
       '>Filtrados por puntos por partido | medias al ",
       format(Sys.Date(), format = "%d/%m/%Y"),
-      " temporada 25-26</span>"
+      " temporada 26-27</span>"
     ))
   ) %>%
   tab_source_note(source_note = md(caption)) |>
-  gtsave("png/ncaaspain.png", vwidth = 3700, vheight = 1500, expand = 300)
-
+  gtsave(glue("png/ncaaspain_{.x}.png"), vwidth = 3700, vheight = 1500, expand = 300))

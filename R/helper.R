@@ -33,7 +33,7 @@ spain_players <-
     "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
     show_col_types = FALSE
   ) %>%
-  select(athlete_display_name = Player, Nombre)
+  select(athlete_display_name = Player, Nombre, grupo = Grupo)
 
 
 

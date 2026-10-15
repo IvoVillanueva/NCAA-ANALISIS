@@ -20,7 +20,7 @@ spain_df <- players_all %>%
 spain_df_final <- players_all %>%
   select(
     jug = athlete_display_name, pos = athlete_position_abbreviation,
-    team_display_name, team_logo, athlete_headshot_href
+    team_display_name, team_logo, athlete_headshot_href, grupo
   ) %>%
   unique() %>%
   drop_na() %>%
