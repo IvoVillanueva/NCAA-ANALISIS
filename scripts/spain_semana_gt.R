@@ -1,10 +1,10 @@
 source("scripts/spain_semana_datos.R")
 
 # Función para crear la tabla por semana
-samanas_df <- function(semana) {
+samanas_df <- function(semana, nivel) {
   # Crear la tabla gt
   spain_df_semanas_final %>%
-    filter(wk == semana & pts > 2) %>%
+    filter(wk == semana & grupo == nivel & pts > 2) %>%
     head(15) %>%
     mutate(
       name = word(jug, 1),
@@ -78,18 +78,24 @@ samanas_df <- function(semana) {
     ) %>%
     gt_color_rows(pts, palette = c("white", "#009CDE")) %>%
     tab_header(
-      title = md(glue("<div style='display: flex; align-items: center;
+      title = html(glue("<div style='display: flex; align-items: center;
     justify-content: left; height: 58px; text-align: center; font-weight: 600;
     font-size: 75px;'>
-               <span style='text-align:left;'>Españoles en la NCAA Semana {semana}</div>")),
-      subtitle = md(paste0(
+               <span style='text-align:left;'>Españoles en la NCAA {nivel} Semana {semana}</div>")),
+      subtitle = html(paste0(
         "<span style='display:block;text-align:left;font-weight:400;color:#8C8C8C;
                      font-size:40px;
-      '>Filtrados por puntos por partido | temporada 25-26</span>"
+      '>Filtrados por puntos por partido | temporada 26-27</span>"
       ))
     ) %>%
     tab_source_note(source_note = md(caption)) |>
-    gtsave(glue("png/ncaaspain_semana_{semana}.png"), vwidth = 3700, vheight = 1500, expand = 300)
+    gtsave(
+      glue("png/ncaaspain_semana_{semana}_{nivel}.png"),
+      vwidth = 3700, vheight = 1500, expand = 300
+    )
 }
 
-map(unique(semanas_df$semana), samanas_df)
+spain_df_semanas_final %>%
+  filter(pts > 2) %>%
+  distinct(semana = wk, nivel = grupo) %>%
+  pwalk(samanas_df)

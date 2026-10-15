@@ -18,7 +18,6 @@ semanas_df <- players_all %>%
 
 # Filtrar y resumir los datos de los jugadores españoles por semana
 spain_df_semanas <- semanas_df %>%
-  filter(athlete_display_name %in% spain_players) %>%
   group_by(semana, athlete_display_name) %>%
   summarise(
     gm = sum(ifelse(!did_not_play, 1, 0), na.rm = TRUE),
@@ -38,7 +37,7 @@ spain_df_semanas <- semanas_df %>%
 spain_df_semanas_final <- semanas_df %>%
   select(
     jug = athlete_display_name, pos = athlete_position_abbreviation,
-    team_display_name, team_logo, athlete_headshot_href
+    team_display_name, team_logo, athlete_headshot_href, grupo
   ) %>%
   unique() %>%
   drop_na() %>%

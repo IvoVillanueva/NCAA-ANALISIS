@@ -33,11 +33,7 @@ spain_players <-
     "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
     show_col_types = FALSE
   ) %>%
-  mutate(Player = gsub("\\s+", " ", Player),
-         Player = ifelse( Player == "Ruben Dominguez", "Rubén Dominguez", Player
-         )
-  ) %>%
-  pull(Player)
+  select(athlete_display_name = Player, Nombre, grupo = Grupo)
 
 
 

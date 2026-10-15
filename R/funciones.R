@@ -60,7 +60,10 @@ for (i in get_calendar()) {
   message("Descargado dia " , i)
 }
 
-players_all <- dplyr::bind_rows(res_players, .id = "date_id")
+# ESPN escribe los nombres sin tildes: nos quedamos con los españoles y su nombre con tildes
+players_all <- dplyr::bind_rows(res_players, .id = "date_id") %>%
+  inner_join(spain_players, join_by(athlete_display_name)) %>%
+  mutate(athlete_display_name = Nombre, .keep = "unused")
 
 
 
